@@ -15,7 +15,7 @@ use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Component\Security\Core\Authentication\AuthenticationManagerInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
-use Symfony\Component\Security\Core\SecurityContextInterface;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
 use Symfony\Component\Security\Http\Firewall\ListenerInterface;
 use Symfony\Component\Security\Http\SecurityEvents;
@@ -32,7 +32,7 @@ class WordpressListener implements ListenerInterface
     /**
      * Constructor
      *
-     * @param SecurityContextInterface $securityContext
+     * @param TokenStorage $securityContext
      * @param WordpressCookieService $cookieService
      * @param AuthenticationCookieManager $cookieManager
      * @param AuthenticationManagerInterface $authenticationManager
@@ -40,7 +40,7 @@ class WordpressListener implements ListenerInterface
      * @param EventDispatcherInterface $dispatcher
      */
     public function __construct(
-        SecurityContextInterface $securityContext,
+        TokenStorage $securityContext,
         WordpressCookieService $cookieService,
         AuthenticationCookieManager $cookieManager,
         AuthenticationManagerInterface $authenticationManager,
